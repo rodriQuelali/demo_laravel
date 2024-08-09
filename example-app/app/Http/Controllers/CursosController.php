@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
 use App\Models\Curso;
+
 
 class CursosController extends Controller
 {
@@ -14,9 +16,11 @@ class CursosController extends Controller
     //mostrar show
 
     public function index() {
+
         $cursos = Curso::all();
 
         return view('curso.index',['cursos' => $cursos]);
+
     }
 
     public function create(){
@@ -26,6 +30,7 @@ class CursosController extends Controller
 
     public function show($curso){
         // compact('variable')
+
         $cursoT = Curso::findOrFail($curso);
         return view('curso.show',['curso' => $cursoT]);
         //return "curos de:$curso"; 
@@ -64,4 +69,5 @@ class CursosController extends Controller
         return redirect()->route('cursos.index')
                         ->with('success', 'Curso eliminado exitosamente.');
     }
+
 }

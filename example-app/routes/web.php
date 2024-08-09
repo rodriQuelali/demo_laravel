@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CursosController;
+
 use App\Http\Controllers\LoginController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,8 +22,10 @@ use App\Http\Controllers\LoginController;
 //     return view('welcome');
 // });
 
+
 Route::get('/', LoginController::class);
 Route::post('home', HomeController::class)->name('home');
+
 
 // Route::get('users/{id}', function ($id) {
 //     return view('Bienvenido a la pagina web');
@@ -29,6 +33,7 @@ Route::post('home', HomeController::class)->name('home');
 
 //------TERCERO grupo de rutas
 Route::controller(CursosController::class)->group(function () {
+
     Route::get('curso', 'index')->name('curso.index');
     Route::get('curso/create', 'create')->name('curso.create');
     Route::post('curso', 'store')->name('curso.store');
@@ -47,6 +52,7 @@ Route::controller(CursosController::class)->group(function () {
 //     Route::put('cursos/{curso}', 'update')->name('cursos.update'); // Actualizar un curso existente
 //     Route::delete('cursos/{curso}', 'destroy')->name('cursos.destroy'); // Eliminar un curso
 // });
+
 
 //-----SEGUNDO
 // Route::get('curso', [CursosController::class, 'index']);
