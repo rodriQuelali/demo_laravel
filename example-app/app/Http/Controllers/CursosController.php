@@ -16,12 +16,14 @@ class CursosController extends Controller
     //mostrar show
 
 
+
     public function __construct()
     {
         $this->middleware('auth');
     }
 
     public function index() {
+
         $cursos = Curso::all();
 
         return view('curso.index',['cursos' => $cursos]);

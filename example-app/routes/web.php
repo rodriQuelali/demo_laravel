@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CursosController;
+
 use App\Http\Controllers\LoginController;
 
 
@@ -23,6 +24,7 @@ use App\Http\Controllers\LoginController;
 //     return view('welcome');
 // });
 
+
 Route::get('/', LoginController::class);
 Route::get('login', [AuthController::class, 'loginInicio'])->name('login');
 Route::post('login', [AuthController::class, 'login'])->name('login');
@@ -31,11 +33,13 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware('auth')->group( function () {
     Route::get('home', HomeController::class)->name('home');
 
+
 // Route::get('users/{id}', function ($id) {
 //     return view('Bienvenido a la pagina web');
 // });
 
 //------TERCERO grupo de rutas
+
 
     Route::controller(CursosController::class)->group(function () {
         Route::get('curso', 'index')->name('curso.index');
@@ -48,6 +52,7 @@ Route::middleware('auth')->group( function () {
         //Route::get('curso/{curso}', 'edit')->name('curso.edit');
     });
     
+
 });
 
 
