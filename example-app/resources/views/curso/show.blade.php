@@ -1,6 +1,10 @@
 @extends('layouts.header')
 
+<<<<<<< HEAD
+@section('title', 'Curso '.$curso->nombre)
+=======
 @section('title', 'Curso '.$curso)
+>>>>>>> origin/main
 
 @section('content')
 

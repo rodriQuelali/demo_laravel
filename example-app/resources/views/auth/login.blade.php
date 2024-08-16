@@ -31,17 +31,6 @@
         margin-left: 0.3em;
     }
 </style>
-
-@if($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
 <div class="card p-4" style="width: 100%; max-width: 400px;">
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Escudo_Instituto_Tecnologico_Bolivia_Mar_by_rithchard.jpg/405px-Escudo_Instituto_Tecnologico_Bolivia_Mar_by_rithchard.jpg" class="card-img-top" alt="Login Image" width="20" height="280">
     <div class="card-body">
@@ -69,4 +58,3 @@
 </div>
 
 @endsection()
-

@@ -15,6 +15,13 @@ class CursosController extends Controller
     //crear un formulario
     //mostrar show
 
+
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index() {
 
         $cursos = Curso::all();
@@ -33,6 +40,15 @@ class CursosController extends Controller
 
         $cursoT = Curso::findOrFail($curso);
         return view('curso.show',['curso' => $cursoT]);
+        //return "curos de:$curso"; 
+    }
+
+
+
+    public function edit($curso){
+        // compact('variable')
+        $cursoT = Curso::findOrFail($curso);
+        return view('curso.editar',['curso' => $cursoT]);
         //return "curos de:$curso"; 
     }
 
@@ -58,7 +74,9 @@ class CursosController extends Controller
 
         $curso->update($request->all());
 
-        return redirect()->route('cursos.index')
+
+        return redirect()->route('curso.index')
+
                         ->with('success', 'Curso actualizado exitosamente.');
     }
 
@@ -66,7 +84,8 @@ class CursosController extends Controller
     {
         $curso->delete();
 
-        return redirect()->route('cursos.index')
+
+        return redirect()->route('curso.index')
                         ->with('success', 'Curso eliminado exitosamente.');
     }
 
