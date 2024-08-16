@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CursosController;
@@ -21,20 +22,30 @@ use App\Http\Controllers\LoginController;
 // });
 
 Route::get('/', LoginController::class);
-Route::post('home', HomeController::class)->name('home');
+Route::get('login', [AuthController::class, 'loginInicio'])->name('login');
+Route::post('login', [AuthController::class, 'login'])->name('login');
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
+Route::middleware('auth')->group( function () {
+    Route::get('home', HomeController::class)->name('home');
 // Route::get('users/{id}', function ($id) {
 //     return view('Bienvenido a la pagina web');
 // });
 
 //------TERCERO grupo de rutas
-Route::controller(CursosController::class)->group(function () {
-    Route::get('curso', 'index')->name('curso.index');
-    Route::get('curso/create', 'create')->name('curso.create');
-    Route::post('curso', 'store')->name('curso.store');
-    Route::get('curso/{curso}', 'show')->name('curso.show');
-    //Route::get('curso/{curso}', 'edit')->name('curso.edit');
+    Route::controller(CursosController::class)->group(function () {
+        Route::get('curso', 'index')->name('curso.index');
+        Route::get('curso/create', 'create')->name('curso.create');
+        Route::post('curso', 'store')->name('curso.store');
+        Route::get('curso/{curso}', 'show')->name('curso.show');
+        Route::delete('curso/{curso}', 'destroy')->name('curso.delete');
+        Route::get('curso/{curso}/edit', 'edit')->name('curso.edit');
+        Route::put('curso/{curso}', 'update')->name('curso.update');
+        //Route::get('curso/{curso}', 'edit')->name('curso.edit');
+    });
+    
 });
+
 
 
 

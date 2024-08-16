@@ -1,6 +1,6 @@
 @extends('layouts.header')
 
-@section('title', 'Curso '.$curso)
+@section('title', 'Curso '.$curso->nombre)
 
 @section('content')
 
