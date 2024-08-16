@@ -1,10 +1,12 @@
 <?php
 
+
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CursosController;
 use App\Http\Controllers\LoginController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,11 +30,13 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group( function () {
     Route::get('home', HomeController::class)->name('home');
+
 // Route::get('users/{id}', function ($id) {
 //     return view('Bienvenido a la pagina web');
 // });
 
 //------TERCERO grupo de rutas
+
     Route::controller(CursosController::class)->group(function () {
         Route::get('curso', 'index')->name('curso.index');
         Route::get('curso/create', 'create')->name('curso.create');
@@ -48,7 +52,6 @@ Route::middleware('auth')->group( function () {
 
 
 
-
 // Route::controller(CursoController::class)->group(function () {
 //     Route::get('cursos', 'index')->name('cursos.index'); // Listar todos los cursos
 //     Route::get('cursos/create', 'create')->name('cursos.create'); // Mostrar formulario de creación
@@ -58,6 +61,7 @@ Route::middleware('auth')->group( function () {
 //     Route::put('cursos/{curso}', 'update')->name('cursos.update'); // Actualizar un curso existente
 //     Route::delete('cursos/{curso}', 'destroy')->name('cursos.destroy'); // Eliminar un curso
 // });
+
 
 //-----SEGUNDO
 // Route::get('curso', [CursosController::class, 'index']);

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
 use App\Models\Curso;
+
 
 class CursosController extends Controller
 {
@@ -12,6 +14,7 @@ class CursosController extends Controller
     //formulario principal
     //crear un formulario
     //mostrar show
+
 
     public function __construct()
     {
@@ -22,6 +25,7 @@ class CursosController extends Controller
         $cursos = Curso::all();
 
         return view('curso.index',['cursos' => $cursos]);
+
     }
 
     public function create(){
@@ -31,10 +35,12 @@ class CursosController extends Controller
 
     public function show($curso){
         // compact('variable')
+
         $cursoT = Curso::findOrFail($curso);
         return view('curso.show',['curso' => $cursoT]);
         //return "curos de:$curso"; 
     }
+
 
 
     public function edit($curso){
@@ -43,6 +49,7 @@ class CursosController extends Controller
         return view('curso.editar',['curso' => $cursoT]);
         //return "curos de:$curso"; 
     }
+
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -65,7 +72,9 @@ class CursosController extends Controller
 
         $curso->update($request->all());
 
+
         return redirect()->route('curso.index')
+
                         ->with('success', 'Curso actualizado exitosamente.');
     }
 
@@ -73,7 +82,9 @@ class CursosController extends Controller
     {
         $curso->delete();
 
+
         return redirect()->route('curso.index')
                         ->with('success', 'Curso eliminado exitosamente.');
     }
+
 }

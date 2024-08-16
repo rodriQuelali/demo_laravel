@@ -27,12 +27,21 @@
                     <td scope="row">{{ $curso->id }}</td>
                     <td>{{ $curso->nombre }}</td>
                     <td>{{ $curso->estado ? 'Activo' : 'Inactivo' }}</td>
+<<<<<<< HEAD
                     <td> <a href="{{ route('curso.show', $curso) }}" class="btn btn-primary">Ver</a>
                         <a href="{{ route('curso.edit', $curso) }}">Editar</a>
                         <form action="{{ route('curso.delete', $curso) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Eliminar</button>
+=======
+                    <td> <a href="{{ route('curso.show', $curso) }}">Ver</a>
+                        {{-- <a href="{{ route('curso.edit', $curso) }}">Editar</a> --}}
+                        <form action="" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Eliminar</button>
+>>>>>>> origin/main
                         </form>
                     </td>
                 </tr>
